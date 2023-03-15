@@ -33,14 +33,14 @@
     align-items: center;
     justify-content: center;
 }
-.inof p{
+.info p{
     padding-right: 1rem;
 }
 table{
     margin: .5rem 0;
 }
 td, th{
-    padding:3px;
+    padding:5px;
     text-align: center;
 }
 th{

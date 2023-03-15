@@ -1,6 +1,6 @@
 import React from 'react'
+import "../styles/Navbar.css"
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
-import "./Navbar.css"
 import { Link } from 'react-router-dom'
 
 function Navbar(){
