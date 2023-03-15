@@ -1,19 +1,21 @@
 import React, {useState, useEffect} from 'react'
+import "../styles/Coin.css"
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import "./Coin.css"
 import DOMPurify from 'dompurify'
 
 
 function Coin() {
     const params = useParams()
-    const [coin,setCoin] = useState({})
-    const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}`
+        // console.log(params)
+    const [coin, setCoin] = useState({})
+    
+    const url = `https://api.coingecko.com/api/v3/coins/${params.cryptoId}`
 
     useEffect(()=>{
         axios.get(url).then((response)=>{
             setCoin(response.data)
-            console.log(response.data)
+            // console.log(response)
         }).catch((error)=>{
             console.log(error)
         })
@@ -21,7 +23,6 @@ function Coin() {
 
   return (
     <div>
-
         <div className='coin-container'>
             <div className='content'>
                 <h1>{coin.name}</h1>
@@ -55,12 +56,12 @@ function Coin() {
                     </thead>
                     <tbody>
                         <tr>
-                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_1h_in_currency.eur.toFixed(2)} €</td> : null} 
-                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_24h_in_currency.eur.toFixed(2)} €</td> : null} 
-                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_7d_in_currency.eur.toFixed(2)} €</td> : null} 
-                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_14d_in_currency.eur.toFixed(2)} €</td> : null}  
-                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_30d_in_currency.eur.toFixed(2)} €</td> : null} 
-                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_1y_in_currency.eur.toFixed(2)} €</td> : null} 
+                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_1h_in_currency.eur.toFixed(2)} %</td> : null} 
+                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_24h_in_currency.eur.toFixed(2)} %</td> : null} 
+                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_7d_in_currency.eur.toFixed(2)} %</td> : null} 
+                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_14d_in_currency.eur.toFixed(2)} %</td> : null}  
+                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_30d_in_currency.eur.toFixed(2)} %</td> : null} 
+                          {coin.market_data ? <td>{coin.market_data.price_change_percentage_1y_in_currency.eur.toFixed(2)} %</td> : null} 
                         </tr>
                     </tbody>
                 </table>
@@ -96,6 +97,7 @@ function Coin() {
                     __html: DOMPurify.sanitize(coin.description ? coin.description.en : "")
                 }}>
                 </p>
+                {/* <p>{coin.description ? coin.description.en : ""}</p> */}
             </div>
         </div>
         </div>

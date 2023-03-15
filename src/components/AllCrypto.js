@@ -1,10 +1,11 @@
 import React from 'react'
+import "../styles/AllCrypto.css"
 import CoinItem from './CoinItem'
-import "./AllCrypto.css"
 import Coin from './Coin'
 import { Link } from 'react-router-dom'
 
-function Coins ({coins}){
+function AllCrypto ({coins}){
+    // console.log(coins)
   return (
     <div className='container'>
         <div>
@@ -13,8 +14,8 @@ function Coins ({coins}){
                 <p className='coin-name'>Coin</p>
                 <p>Price</p>
                 <p>24H</p>
-                <p className='hide-mobile'>Volume</p>
-                <p className='hide-mobile'>Market Cap</p>
+                <p className='hide'>Volume</p>
+                <p className='hide'>Market Cap</p>
             </div>
 
             {coins.map(coin=>{
@@ -30,4 +31,4 @@ function Coins ({coins}){
   )
 }
 
-export default Coins
+export default AllCrypto
